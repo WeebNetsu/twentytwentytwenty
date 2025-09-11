@@ -1,0 +1,112 @@
+<Window
+    x:Class="twentytwentytwenty.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="twentytwentytwenty"
+    Width="400"
+    Height="300"
+    d:DesignHeight="400"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <Border Padding="15" Background="#1E1E2E">
+        <Grid RowDefinitions="Auto,Auto,*,Auto">
+            <!--  Title  -->
+            <TextBlock
+                Margin="0,0,0,20"
+                HorizontalAlignment="Center"
+                FontSize="28"
+                FontWeight="Bold"
+                Foreground="#F8F8F2"
+                Text="Timer" />
+
+            <!--  Input fields  -->
+            <StackPanel
+                Grid.Row="1"
+                HorizontalAlignment="Center"
+                Orientation="Horizontal"
+                Spacing="10">
+                <StackPanel>
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Foreground="#C0CAF5"
+                        Text="Hours" />
+                    <NumericUpDown
+                        Width="60"
+                        Background="#2E3440"
+                        Foreground="#F8F8F2"
+                        Maximum="23"
+                        Minimum="0" />
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Foreground="#C0CAF5"
+                        Text="Minutes" />
+                    <NumericUpDown
+                        Width="60"
+                        Background="#2E3440"
+                        Foreground="#F8F8F2"
+                        Maximum="59"
+                        Minimum="0" />
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Foreground="#C0CAF5"
+                        Text="Seconds" />
+                    <NumericUpDown
+                        Width="60"
+                        Background="#2E3440"
+                        Foreground="#F8F8F2"
+                        Maximum="59"
+                        Minimum="0" />
+                </StackPanel>
+            </StackPanel>
+
+            <!--  Timer Display  -->
+            <Border
+                Grid.Row="2"
+                Margin="0,20"
+                Padding="20"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Background="#2E3440"
+                CornerRadius="12">
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    FontSize="36"
+                    FontWeight="Bold"
+                    Foreground="#A6E3A1"
+                    Text="00:00:00" />
+            </Border>
+
+            <!--  Buttons  -->
+            <StackPanel
+                Grid.Row="3"
+                HorizontalAlignment="Center"
+                Orientation="Horizontal"
+                Spacing="15">
+                <Button
+                    Background="#A6E3A1"
+                    CornerRadius="8"
+                    Foreground="Black">
+                    Start
+                </Button>
+                <Button
+                    Background="#F38BA8"
+                    CornerRadius="8"
+                    Foreground="Black">
+                    Stop
+                </Button>
+                <Button
+                    Background="#89B4FA"
+                    CornerRadius="8"
+                    Foreground="Black">
+                    Restart
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>
