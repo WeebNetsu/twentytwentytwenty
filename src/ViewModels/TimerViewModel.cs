@@ -3,58 +3,59 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using ReactiveUI;
 
-namespace twentytwentytwenty;
-
-public class TimerViewModel : INotifyPropertyChanged
+namespace twentytwentytwenty.src.ViewModels
 {
-    private int _hours, _minutes, _seconds;
-    public int Hours
+    public class TimerViewModel : INotifyPropertyChanged
     {
-        get => _hours;
-
-        set
+        private int _hours, _minutes, _seconds;
+        public int Hours
         {
-            // value variable is provided by default on set
-            _hours = value;
-            OnPropertyChanged();
-            OnPropertyChanged(nameof(TimerDisplay)); // update display
-        }
-    }
-    public int Minutes
-    {
-        get => _minutes;
+            get => _hours;
 
-        set
+            set
+            {
+                // value variable is provided by default on set
+                _hours = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(TimerDisplay)); // update display
+            }
+        }
+        public int Minutes
         {
-            // value variable is provided by default on set
-            _minutes = value;
-            OnPropertyChanged();
-            OnPropertyChanged(nameof(TimerDisplay)); // update display
-        }
-    }
-    public int Seconds
-    {
-        get => _seconds;
+            get => _minutes;
 
-        set
+            set
+            {
+                // value variable is provided by default on set
+                _minutes = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(TimerDisplay)); // update display
+            }
+        }
+        public int Seconds
         {
-            // value variable is provided by default on set
-            _seconds = value;
-            OnPropertyChanged();
-            OnPropertyChanged(nameof(TimerDisplay)); // update display
+            get => _seconds;
+
+            set
+            {
+                // value variable is provided by default on set
+                _seconds = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(TimerDisplay)); // update display
+            }
         }
+
+        public string TimerDisplay => $"{Hours:D2}:{Minutes:D2}:{Seconds:D2}";
+
+        public ICommand IncrementHoursCommand { get; }
+
+        public TimerViewModel()
+        {
+            IncrementHoursCommand = ReactiveCommand.Create(() => Hours++);
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        private void OnPropertyChanged([CallerMemberName] string name = null!)
+           => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }
-
-    public string TimerDisplay => $"{Hours:D2}:{Minutes:D2}:{Seconds:D2}";
-
-    public ICommand IncrementHoursCommand { get; }
-
-    public TimerViewModel()
-    {
-        IncrementHoursCommand = ReactiveCommand.Create(() => Hours++);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-    private void OnPropertyChanged([CallerMemberName] string name = null!)
-       => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 }

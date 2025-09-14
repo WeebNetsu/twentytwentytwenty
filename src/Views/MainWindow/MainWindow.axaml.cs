@@ -1,13 +1,15 @@
 using Avalonia.Controls;
+using twentytwentytwenty.src.ViewModels;
 
-namespace twentytwentytwenty;
-
-public partial class MainWindow : Window
+namespace twentytwentytwenty
 {
-    public MainWindow()
+    public partial class MainWindow : Window
     {
-        InitializeComponent();
+        public MainWindow()
+        {
+            InitializeComponent();
 
-        DataContext = new TimerViewModel(); // binds the ui to the model
+            DataContext = new TimerViewModel(); // binds the ui to the model
+        }
     }
 }
